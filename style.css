@@ -1123,3 +1123,250 @@ button:focus-visible {
   height: 100%;
   border: 0;
 }
+
+/* ==========================================================================
+   Customer Reviews Carousel
+   ========================================================================== */
+
+.reviews-section {
+  background: var(--color-bg-soft);
+}
+
+.reviews-carousel {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* Clips the neighboring slides so only the active one is ever visible */
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: height 0.4s ease;   /* NEW — smooth height change between slides */
+}
+
+.reviews-track {
+  display: flex;
+   align-items: flex-start;   /* NEW — stops all slides stretching to the tallest one's height */
+  width: 100%;
+  transition: transform var(--transition-medium);
+}
+
+.review-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+  display: flex;             /* NEW */
+  align-items: center;       /* NEW */
+  justify-content: center;   /* NEW */
+}
+
+/* Every slide sits inside a fixed 16:9 frame, whatever its content */
+.slide-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-surface-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  transform: scale(0.96);
+  opacity: 0.7;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Active slide "pops" into focus */
+.review-slide.is-active .slide-frame {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.slide-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Screenshot slides: contain (not crop) so nothing important gets cut off */
+.slide-frame-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+}
+
+.slide-frame-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Review-text slides */
+.slide-frame-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  aspect-ratio: auto;   /* NEW — overrides the inherited 16:9 ratio */
+  min-height: 320px;    /* NEW — sensible floor so it doesn't collapse too small */
+  height: auto;         /* NEW */
+}
+
+.review-card {
+  max-width: 520px;
+  text-align: center;
+}
+
+.quote-icon {
+  color: var(--color-accent);
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.testi-stars {
+  color: var(--color-accent);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-surface-border);
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.review-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.review-location {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Prev / Next buttons ---- */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--color-surface-border);
+  color: var(--color-text);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  z-index: 5;
+  transition: transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  color: var(--color-accent);
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel-btn:disabled:hover {
+  color: var(--color-text);
+  border-color: var(--color-surface-border);
+}
+
+.carousel-btn-prev {
+  left: -12px;
+}
+
+.carousel-btn-prev:hover {
+  transform: translateY(-50%) translateX(-2px);
+}
+
+.carousel-btn-next {
+  right: -12px;
+}
+
+.carousel-btn-next:hover {
+  transform: translateY(-50%) translateX(2px);
+}
+
+/* ---- Pagination dots ---- */
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-surface-border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.carousel-dot:hover {
+  background: rgba(249, 115, 22, 0.5);
+}
+
+.carousel-dot.active {
+  background: var(--color-accent);
+  transform: scale(1.25);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 640px) {
+  .carousel-btn-prev { left: 6px; }
+  .carousel-btn-next { right: 6px; }
+
+  .slide-frame-review {
+    padding: 24px;
+    min-height: 280px;   /* NEW */
+  }
+
+  .review-author { flex-direction: column; gap: 8px; }
+  .review-author-info { align-items: center; text-align: center; }
+}
