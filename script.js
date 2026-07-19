@@ -195,3 +195,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+/* ==========================================================================
+   Customer Reviews Carousel
+   Manual navigation only — no autoplay. Prev/Next buttons + pagination dots.
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('reviewsTrack');
+  const prevBtn = document.getElementById('prevSlideBtn');
+  const nextBtn = document.getElementById('nextSlideBtn');
+  const dotsContainer = document.getElementById('carouselDots');
+  const viewport = document.getElementById('carouselViewport'); // NEW
+
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  const slides = Array.from(track.children);
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+
+  // Build one dot per slide
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsContainer.children);
+
+  // NEW — measures the active slide's real height and applies it to the viewport
+  const updateHeight = () => {
+    if (!viewport) return;
+    const activeSlide = slides[currentIndex];
+    if (activeSlide) {
+      viewport.style.height = `${activeSlide.scrollHeight}px`;
+    }
+  };
+
+  const updateCarousel = () => {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === currentIndex));
+
+    // Disable Prev on the first slide and Next on the last — no looping
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === totalSlides - 1;
+
+    updateHeight(); // NEW
+  };
+
+  const goToSlide = (index) => {
+    currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+    updateCarousel();
+  };
+
+  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+  window.addEventListener('resize', updateHeight); // NEW — recalculate on rotate/resize
+
+  updateCarousel(); // set initial state (Prev disabled on slide 1, is-active on slide 1, height set)
+});
