@@ -12,6 +12,7 @@
     />
 
     <!-- Google Font: Poppins -->
+    <link rel="icon" type="image/png" href="images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,9 +46,9 @@
         </button>
 
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#course" class="nav-link">Course</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="#" class="nav-link">Course</a></li>
+          <!-- <li><a href="index.html/contact" class="nav-link">Contact</a></li> -->
           <li>
             <!-- REPLACE HERE: Point this Buy Now link to your Razorpay payment link -->
             <a
@@ -131,7 +132,9 @@
                 </svg>
                 Chat on WhatsApp
               </a> -->
-              <p>Video mein ₹999 bola tha, but launch ke liye ₹499 kar diya hai</p>
+              <p>
+                Video mein ₹999 bola tha, but launch ke liye ₹499 kar diya hai
+              </p>
             </div>
           </div>
 
@@ -249,6 +252,237 @@
               >Buy Now — ₹499</a
             >
           </div>
+        </div>
+      </section>
+      <!-- ===================== CUSTOMER REVIEWS SECTION ===================== -->
+      <section class="reviews-section" id="reviews">
+        <div class="section-container">
+          <h2 class="section-heading fade-in">What Clients Say's</h2>
+          <p class="section-subheading fade-in">
+            Real feedback from real Fiverr clients
+          </p>
+
+          <div class="reviews-carousel fade-in" id="reviewsCarousel">
+            <div class="carousel-viewport" id="carouselViewport">
+              <div class="reviews-track" id="reviewsTrack">
+                <!-- Slide 1: YouTube video testimonial -->
+                <div class="review-slide">
+                  <div class="slide-frame">
+                    <!-- REPLACE HERE: swap YOUR_VIDEO_ID with your testimonial video's YouTube ID -->
+                    <iframe
+                      src="https://www.youtube.com/embed/7azo1lVcGx8?si=S8cuepC3qhZwIMTM"
+                      title="Client video testimonial"
+                      frameborder="0"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                      "
+                      allowfullscreen
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Fiverr gig screenshot (part 1) -->
+                <div class="review-slide">
+                  <div class="slide-frame slide-frame-image">
+                    <!-- REPLACE HERE: swap with your Fiverr gig screenshot (top part) -->
+                    <img
+                      src="images/fiverr-gig-1.jpeg"
+                      alt="Fiverr gig listing screenshot, part 1"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <!-- Slide 3: Fiverr gig screenshot (part 2) -->
+                <div class="review-slide">
+                  <div class="slide-frame slide-frame-image">
+                    <!-- REPLACE HERE: swap with your Fiverr gig screenshot (remaining part) -->
+                    <img
+                      src="images/fiverr-gig-2.jpeg"
+                      alt="Fiverr gig listing screenshot, part 2"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <!-- Slide 4: Client review 1 -->
+                <div class="review-slide">
+                  <div class="slide-frame slide-frame-review">
+                    <div class="review-card">
+                      <svg
+                        class="quote-icon"
+                        viewBox="0 0 32 24"
+                        width="36"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M0 24V13.5C0 6 4.8 0.8 12 0v5.5C8 6.5 5.6 9 5.6 13.5H12V24H0zm18 0V13.5C18 6 22.8 0.8 30 0v5.5c-4 1-6.4 3.5-6.4 8H30V24H18z"
+                        />
+                      </svg>
+                      <div class="testi-stars">★★★★★</div>
+                      <!-- REPLACE HERE: swap in your client's review text -->
+                      <p class="review-text">
+                        "Amazing experience working with him! He understood
+                        exactly what I wanted and delivered a high-quality video
+                        even better than I expected. Communication was smooth,
+                        and he was very professional throughout the whole
+                        process. I highly recommend him and will definitely work
+                        with him again!"
+                      </p>
+                      <div class="review-author">
+                        <!-- REPLACE HERE: swap with client's profile/company logo -->
+                        <img
+                          src="images/client-logo-1.jpeg"
+                          alt=""
+                          class="review-avatar"
+                          loading="lazy"
+                        />
+                        <div class="review-author-info">
+                          <!-- REPLACE HERE: client name -->
+                          <span class="review-name">Zetch_</span>
+                          <!-- REPLACE HERE: client country/region -->
+                          <span class="review-location">— Turkey</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 5: Client review 2 -->
+                <div class="review-slide">
+                  <div class="slide-frame slide-frame-review">
+                    <div class="review-card">
+                      <svg
+                        class="quote-icon"
+                        viewBox="0 0 32 24"
+                        width="36"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M0 24V13.5C0 6 4.8 0.8 12 0v5.5C8 6.5 5.6 9 5.6 13.5H12V24H0zm18 0V13.5C18 6 22.8 0.8 30 0v5.5c-4 1-6.4 3.5-6.4 8H30V24H18z"
+                        />
+                      </svg>
+                      <div class="testi-stars">★★★★★</div>
+                      <!-- REPLACE HERE: swap in your client's review text -->
+                      <p class="review-text">
+                        "Amazing work! Super easy to communicate with and very
+                        responsive to feedback. The delivery exceeded my
+                        expectations and I'll definitely come back for more
+                        projects!"
+                      </p>
+                      <div class="review-author">
+                        <!-- REPLACE HERE: swap with client's profile/company logo -->
+                        <img
+                          src="images/client-logo-2.jpeg"
+                          alt=""
+                          class="review-avatar"
+                          loading="lazy"
+                        />
+                        <div class="review-author-info">
+                          <!-- REPLACE HERE: client name -->
+                          <span class="review-name">Perimvo</span>
+                          <!-- REPLACE HERE: client country/region -->
+                          <span class="review-location">_Netherlands</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 6: Client review 3 -->
+                <div class="review-slide">
+                  <div class="slide-frame slide-frame-review">
+                    <div class="review-card">
+                      <svg
+                        class="quote-icon"
+                        viewBox="0 0 32 24"
+                        width="36"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M0 24V13.5C0 6 4.8 0.8 12 0v5.5C8 6.5 5.6 9 5.6 13.5H12V24H0zm18 0V13.5C18 6 22.8 0.8 30 0v5.5c-4 1-6.4 3.5-6.4 8H30V24H18z"
+                        />
+                      </svg>
+                      <div class="testi-stars">★★★★★</div>
+                      <!-- REPLACE HERE: swap in your client's review text -->
+                      <p class="review-text">
+                        "Best guy on Fiverr, i order from him only!"
+                      </p>
+                      <div class="review-author">
+                        <!-- REPLACE HERE: swap with client's profile/company logo -->
+                        <img
+                          src="images/client-logo-3.jpeg"
+                          alt=""
+                          class="review-avatar"
+                          loading="lazy"
+                        />
+                        <div class="review-author-info">
+                          <!-- REPLACE HERE: client name -->
+                          <span class="review-name">Teamblazeforce</span>
+                          <!-- REPLACE HERE: client country/region -->
+                          <span class="review-location">_Norway</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prev / Next controls -->
+            <button
+              class="carousel-btn carousel-btn-prev"
+              id="prevSlideBtn"
+              aria-label="Previous slide"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"
+                />
+              </svg>
+            </button>
+            <button
+              class="carousel-btn carousel-btn-next"
+              id="nextSlideBtn"
+              aria-label="Next slide"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M8.6 7.4 10 6l6 6-6 6-1.4-1.4L13.2 12z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Pagination dots (generated by JS) -->
+          <div
+            class="carousel-dots"
+            id="carouselDots"
+            role="tablist"
+            aria-label="Review slides"
+          ></div>
         </div>
       </section>
     </main>
