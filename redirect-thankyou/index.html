@@ -20,6 +20,7 @@
     />
 
 <!-- Meta Pixel Code -->
+<meta name="facebook-domain-verification" content="disable_microdata" />
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,13 +32,12 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '1655776532151405');
-fbq('track', 'Purchase', {value: 499.00, currency: 'INR'});
+fbq('track', 'Purchase', {
+  value: 499.00,
+  currency: 'INR',
+  eventID: 'purchase_' + Date.now()
+});
 </script>
-
-<noscript>
-  <img height="1" width="1" style="display:none" 
-       src="https://www.facebook.com/tr?id=1655776532151405&ev=Purchase&value=499.00&currency=INR&noscript=1" />
-</noscript>
 <!-- End Meta Pixel Code -->
 
     <!-- ===================== INLINE STYLES ===================== -->
