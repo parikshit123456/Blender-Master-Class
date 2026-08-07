@@ -1,6 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+  (function () {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Check if the user is inside Instagram or Facebook in-app browser
+    var isFBorIG = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("Instagram") > -1);
+
+    if (isFBorIG) {
+      var currentUrl = window.location.href;
+
+      // For Android: Uses intent scheme to open in system default browser (Chrome)
+      if (/Android/i.test(ua)) {
+        var chromeUrl = currentUrl.replace(/^https?:\/\//, '');
+        window.location.href = 'intent://' + chromeUrl + '#Intent;scheme=https;package=com.android.chrome;end';
+      } 
+      // For iOS: Displays a light prompt encouraging Safari if auto-break is blocked by Apple restrictions
+      else if (/iPhone|iPad|iPod/i.test(ua)) {
+        // iOS blocks automatic external browser switching via script.
+        // You can let iOS load normally or show a non-intrusive notification banner if needed.
+      }
+    }
+  })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
