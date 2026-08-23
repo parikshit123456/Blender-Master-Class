@@ -37,6 +37,25 @@ fbq('track', 'PageView');
   <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1655776532151405&ev=PageView&noscript=1" />
 </noscript>
 <!-- End Meta Pixel Code -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentParams = window.location.search;
+
+    if (currentParams) {
+      const cleanParams = currentParams.startsWith("?") ? currentParams.substring(1) : currentParams;
+      const buyButtons = document.querySelectorAll('a[href*="razorpay.com"], a[href*="rzp.io"]');
+
+      buyButtons.forEach(function (button) {
+        let originalHref = button.getAttribute("href");
+        if (originalHref) {
+          const separator = originalHref.includes("?") ? "&" : "?";
+          button.setAttribute("href", originalHref + separator + cleanParams);
+        }
+      });
+    }
+  });
+</script>
+    
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
