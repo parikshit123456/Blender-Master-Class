@@ -577,7 +577,7 @@ button:focus-visible {
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
@@ -1109,7 +1109,7 @@ button:focus-visible {
   position: relative;
   width: 100%;
   max-width: 860px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   margin: 0 auto;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1166,7 +1166,7 @@ button:focus-visible {
 .slide-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--color-surface-border);
