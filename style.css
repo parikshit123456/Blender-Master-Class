@@ -65,10 +65,6 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
-  /* Blocks horizontal swipe/pan gestures on touch devices — this is what
-     was letting a left-swipe drag the off-canvas mobile nav into view even
-     though it's positioned outside the viewport. Vertical scrolling (pan-y)
-     still works normally. */
   touch-action: pan-y;
   -webkit-font-smoothing: antialiased;
 }
@@ -82,7 +78,7 @@ body {
 }
 
 .logo-img{
-    height: 50px;   /* Adjust as needed */
+    height: 50px;
     width: auto;
     display: block;
 }
@@ -131,7 +127,6 @@ section {
   color: var(--color-accent);
 }
 
-/* Decorative background grid, echoing a Blender viewport floor grid */
 .viewport-grid {
   position: fixed;
   inset: 0;
@@ -143,7 +138,6 @@ section {
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 10%, transparent 75%);
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -158,7 +152,6 @@ section {
   }
 }
 
-/* Visible keyboard focus state for accessibility */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-accent);
@@ -320,7 +313,6 @@ button:focus-visible {
   background: var(--color-accent-dark);
 }
 
-/* Hamburger (mobile) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -480,8 +472,6 @@ button:focus-visible {
   gap: 16px;
 }
 
-/* ---- Hero visual: viewport-framed thumbnail (signature element) ---- */
-
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -490,7 +480,7 @@ button:focus-visible {
 .viewport-frame {
   position: relative;
   width: 100%;
-  max-width: 420px;   /* was 620px — narrower to fit the vertical video */
+  max-width: 420px;
 }
 
 .viewport-corner {
@@ -554,7 +544,6 @@ button:focus-visible {
   backdrop-filter: blur(8px);
 }
 
-/* Floating animation for the hero thumbnail */
 .float-anim {
   animation: float 5s ease-in-out infinite;
 }
@@ -648,8 +637,6 @@ button:focus-visible {
   background: var(--color-accent-soft);
   color: rgb(13, 172, 13);
 }
-
-/* ---- Pricing summary card ---- */
 
 .pricing-summary {
   max-width: 480px;
@@ -797,8 +784,6 @@ button:focus-visible {
   color: var(--color-text-muted);
 }
 
-/* ---- Contact cards ---- */
-
 .contact-card {
   text-align: center;
   padding: 40px 28px;
@@ -808,8 +793,6 @@ button:focus-visible {
   backdrop-filter: blur(14px);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
-
-/* ---- Quick-contact icons (WhatsApp + Email) ---- */
 
 .contact-icons {
   display: flex;
@@ -971,7 +954,6 @@ button:focus-visible {
    Responsive breakpoints
    ========================================================================== */
 
-/* Tablet and below */
 @media (max-width: 900px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -1012,7 +994,6 @@ button:focus-visible {
   }
 }
 
-/* Mobile nav */
 @media (max-width: 760px) {
   .hamburger {
     display: flex;
@@ -1056,7 +1037,6 @@ button:focus-visible {
     margin-top: 8px;
   }
 
-  /* Reveal the floating mobile Buy Now button */
   .floating-buy {
     display: flex;
   }
@@ -1100,11 +1080,6 @@ button:focus-visible {
   }
 }
 
-
-
-
-
-
 .video-wrapper-vertical {
   position: relative;
   width: 100%;
@@ -1138,16 +1113,15 @@ button:focus-visible {
   margin: 0 auto;
 }
 
-/* Clips the neighboring slides so only the active one is ever visible */
 .carousel-viewport {
   overflow: hidden;
   border-radius: var(--radius-md);
-  transition: height 0.4s ease;   /* NEW — smooth height change between slides */
+  transition: height 0.4s ease;
 }
 
 .reviews-track {
   display: flex;
-   align-items: flex-start;   /* NEW — stops all slides stretching to the tallest one's height */
+  align-items: flex-start;
   width: 100%;
   transition: transform var(--transition-medium);
 }
@@ -1157,12 +1131,11 @@ button:focus-visible {
   width: 100%;
   box-sizing: border-box;
   padding: 0 12px;
-  display: flex;             /* NEW */
-  align-items: center;       /* NEW */
-  justify-content: center;   /* NEW */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Every slide sits inside a fixed 16:9 frame, whatever its content */
 .slide-frame {
   position: relative;
   width: 100%;
@@ -1177,7 +1150,6 @@ button:focus-visible {
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Active slide "pops" into focus */
 .review-slide.is-active .slide-frame {
   transform: scale(1);
   opacity: 1;
@@ -1191,29 +1163,37 @@ button:focus-visible {
   border: 0;
 }
 
-/* Screenshot slides: contain (not crop) so nothing important gets cut off */
+/* Screenshot slides: size the frame to the screenshot's own ratio instead
+   of inheriting the 9:16 box used by the video slides (which caused
+   letterboxing / extra empty space around non-9:16 screenshots) */
 .slide-frame-image {
+  aspect-ratio: auto;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--color-bg);
 }
 
+.slide-frame-video {
+  aspect-ratio: 16 / 9;
+}
+
 .slide-frame-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: contain;
 }
 
-/* Review-text slides */
 .slide-frame-review {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
-  aspect-ratio: auto;   /* NEW — overrides the inherited 16:9 ratio */
-  min-height: 320px;    /* NEW — sensible floor so it doesn't collapse too small */
-  height: auto;         /* NEW */
+  aspect-ratio: auto;
+  min-height: 320px;
+  height: auto;
 }
 
 .review-card {
@@ -1257,6 +1237,16 @@ button:focus-visible {
   border: 1px solid var(--color-surface-border);
 }
 
+.review-avatar-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .review-author-info {
   display: flex;
   flex-direction: column;
@@ -1274,8 +1264,6 @@ button:focus-visible {
   font-size: 0.82rem;
   color: var(--color-text-muted);
 }
-
-/* ---- Prev / Next buttons ---- */
 
 .carousel-btn {
   position: absolute;
@@ -1327,8 +1315,6 @@ button:focus-visible {
   transform: translateY(-50%) translateX(2px);
 }
 
-/* ---- Pagination dots ---- */
-
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -1356,15 +1342,13 @@ button:focus-visible {
   transform: scale(1.25);
 }
 
-/* ---- Responsive ---- */
-
 @media (max-width: 640px) {
   .carousel-btn-prev { left: 6px; }
   .carousel-btn-next { right: 6px; }
 
   .slide-frame-review {
     padding: 24px;
-    min-height: 280px;   /* NEW */
+    min-height: 280px;
   }
 
   .review-author { flex-direction: column; gap: 8px; }
